@@ -20,7 +20,12 @@ class App extends Component {
      } )
 
    }
+ handleClick =() =>{
 
+  console.log('button clicked')
+  this.setState( {gifimg : this.state.giphy[Math.floor(Math.random()*25)].images.original.url})
+  console.log(this.state.gifimg)
+ }
 
   render(){
    
@@ -28,19 +33,23 @@ class App extends Component {
    
     <div className="App">
       <h1> Giphy </h1>
-      <button onClick = {this.handleClick}> Make API Call</button>
-    
-     
+      
+      <button onClick = {this.handleClick}> Make API Call</button> 
+   <div>
+    < h2> Use Giphy to pull some gifs</h2>
+      {this.state.gifimg && <img src = {this.state.gifimg} />}
+      </div>
        {/* {this.state.giphy.map(data => <p> <img src ={data.images.original.url}/> </p>)}  */}
-     {
+     {/* {
       this.state.giphy.map(g=>(
         <div key ={g.id}>
           <img src={g.images.original.url} alt ={g.title} />
           <h3> {g.title}</h3>
         </div>
       ))
+    } */}
 
-     }
+
     </div>
   );
   }
